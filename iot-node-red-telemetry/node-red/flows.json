@@ -1,0 +1,1396 @@
+[
+    {
+        "id": "cc8a456731dc84cf",
+        "type": "tab",
+        "label": "Data Flow & Dashboard",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b451cca79bb0b6f0",
+        "type": "tab",
+        "label": "REST API",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "96331621d2c93328",
+        "type": "mqtt-broker",
+        "name": "Mosquitto Docker",
+        "broker": "iot_mosquitto",
+        "port": 1883,
+        "clientid": "nodered-server01-subscriber",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "154567c738820fa6",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "041f1486266fbf80",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": true
+    },
+    {
+        "id": "3754bce91b741a63",
+        "type": "ui-page",
+        "name": "Linux Server Monitoring",
+        "ui": "041f1486266fbf80",
+        "path": "/iot_monitoring",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "154567c738820fa6",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": true,
+        "disabled": false
+    },
+    {
+        "id": "d815acef15d4ade6",
+        "type": "ui-group",
+        "name": "Temperature Overview",
+        "page": "3754bce91b741a63",
+        "width": 7,
+        "height": 1,
+        "order": 3,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "42c58c285f20256d",
+        "type": "postgreSQLConfig",
+        "name": "iot_timescale",
+        "host": "iot_timescaledb",
+        "hostFieldType": "str",
+        "port": 5432,
+        "portFieldType": "num",
+        "database": "iot_telemetry",
+        "databaseFieldType": "str",
+        "ssl": "false",
+        "sslFieldType": "bool",
+        "applicationName": "",
+        "applicationNameType": "str",
+        "max": 10,
+        "maxFieldType": "num",
+        "idle": 1000,
+        "idleFieldType": "num",
+        "connectionTimeout": 10000,
+        "connectionTimeoutFieldType": "num",
+        "user": "iot",
+        "userFieldType": "str",
+        "password": "iot_password",
+        "passwordFieldType": "str"
+    },
+    {
+        "id": "6c8fb6953404b4a2",
+        "type": "ui-group",
+        "name": "Storage / Memory",
+        "page": "3754bce91b741a63",
+        "width": 7,
+        "height": 1,
+        "order": 2,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "bdec6d2b0ef33348",
+        "type": "ui-group",
+        "name": "System Load",
+        "page": "3754bce91b741a63",
+        "width": 5,
+        "height": 1,
+        "order": 4,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "5745e4c408676d65",
+        "type": "ui-group",
+        "name": "Server Overview",
+        "page": "3754bce91b741a63",
+        "width": 5,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "6179cdf565afd39d",
+        "type": "ui-group",
+        "name": "System Alerts",
+        "page": "3754bce91b741a63",
+        "width": 12,
+        "height": 1,
+        "order": 5,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "93cba36aca5de55b",
+        "type": "mqtt in",
+        "z": "cc8a456731dc84cf",
+        "name": "server01 telemetry",
+        "topic": "iot/group01/server01/telemetry",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "96331621d2c93328",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 260,
+        "wires": [
+            [
+                "6fc7a1eaa87753fc",
+                "c03b712f988cd88c",
+                "36476857e6dd4905",
+                "aa40bc0c3ec043f9",
+                "f0b7df70617bf74d",
+                "afd1ff0583c6f8d8",
+                "3c011fd6ccc0718b"
+            ]
+        ]
+    },
+    {
+        "id": "6fc7a1eaa87753fc",
+        "type": "change",
+        "z": "cc8a456731dc84cf",
+        "name": "Extract CPU Temp",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.cpu_temp_c",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 370,
+        "y": 260,
+        "wires": [
+            [
+                "4dacf01b02219a94",
+                "1e5dab02ee7670fc"
+            ]
+        ]
+    },
+    {
+        "id": "4dacf01b02219a94",
+        "type": "ui-gauge",
+        "z": "cc8a456731dc84cf",
+        "name": "CPU temperature gauge",
+        "group": "d815acef15d4ade6",
+        "order": 1,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 2,
+        "height": 5,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "CPU Temperature",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "°C",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "5",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "99",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "100",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 610,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1e5dab02ee7670fc",
+        "type": "ui-chart",
+        "z": "cc8a456731dc84cf",
+        "group": "d815acef15d4ade6",
+        "name": "CPU temperature chart",
+        "label": "CPU Temperature over time",
+        "order": 2,
+        "chartType": "line",
+        "category": "",
+        "categoryType": "none",
+        "xAxisLabel": "Last hour",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "{HH}:{mm}:{ss}",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "Temperature (°C)",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "",
+        "ymax": "",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "false",
+        "pointRadius": 4,
+        "showLegend": false,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": 5,
+        "height": 7,
+        "className": "",
+        "interpolation": "linear",
+        "x": 610,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c03b712f988cd88c",
+        "type": "change",
+        "z": "cc8a456731dc84cf",
+        "name": "Extract Memory Usage",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.memory_used_percent",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 340,
+        "wires": [
+            [
+                "f66ea506abaf3579"
+            ]
+        ]
+    },
+    {
+        "id": "f66ea506abaf3579",
+        "type": "ui-gauge",
+        "z": "cc8a456731dc84cf",
+        "name": "Memory usage",
+        "group": "6c8fb6953404b4a2",
+        "order": 2,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Memory Usage",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "%",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "100",
+        "sizeThickness": 16,
+        "sizeGap": "4",
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 580,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "36476857e6dd4905",
+        "type": "change",
+        "z": "cc8a456731dc84cf",
+        "name": "Extract Disk Usage",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.disk_used_percent",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 370,
+        "y": 400,
+        "wires": [
+            [
+                "834c51104fad4dc6"
+            ]
+        ]
+    },
+    {
+        "id": "834c51104fad4dc6",
+        "type": "ui-gauge",
+        "z": "cc8a456731dc84cf",
+        "name": "Disk usage",
+        "group": "6c8fb6953404b4a2",
+        "order": 1,
+        "value": "payload",
+        "valueType": "msg",
+        "width": 3,
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Disk Usage",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "%",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "90",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "100",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 570,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "aa40bc0c3ec043f9",
+        "type": "change",
+        "z": "cc8a456731dc84cf",
+        "name": "Extract Load Average",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.loadavg5",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 460,
+        "wires": [
+            [
+                "4be09562f90b7303"
+            ]
+        ]
+    },
+    {
+        "id": "4be09562f90b7303",
+        "type": "ui-chart",
+        "z": "cc8a456731dc84cf",
+        "group": "bdec6d2b0ef33348",
+        "name": "Load average (5 min)",
+        "label": "Load Average over time",
+        "order": 1,
+        "chartType": "line",
+        "category": "",
+        "categoryType": "none",
+        "xAxisLabel": "Last 5 minutes",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "{HH}:{mm}:{ss}",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "Load Average",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "",
+        "ymax": "",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "false",
+        "pointRadius": 4,
+        "showLegend": false,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": "6",
+        "height": 7,
+        "className": "",
+        "interpolation": "linear",
+        "x": 600,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f0b7df70617bf74d",
+        "type": "function",
+        "z": "cc8a456731dc84cf",
+        "name": "Format Last Update",
+        "func": "const p = msg.payload;\n\nconst formattedTimestamp = p.timestamp\n    .replace('T', ' ')\n    .split('.')[0];\n\nmsg.payload = `Device: ${p.device_id}<br>\nStatus: online<br>\nUptime: ${p.uptime_seconds} seconds<br>\nLast update: ${formattedTimestamp}`;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 520,
+        "wires": [
+            [
+                "325680bd446cf1ce"
+            ]
+        ]
+    },
+    {
+        "id": "325680bd446cf1ce",
+        "type": "ui-text",
+        "z": "cc8a456731dc84cf",
+        "group": "5745e4c408676d65",
+        "order": 1,
+        "width": 0,
+        "height": 3,
+        "name": "Server status",
+        "label": "Server Status",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 570,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "1af852ed6f8e493f",
+        "type": "ui-text",
+        "z": "cc8a456731dc84cf",
+        "group": "6179cdf565afd39d",
+        "order": 1,
+        "width": 6,
+        "height": 0,
+        "name": "Alerts",
+        "label": "Alerts",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 550,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "afd1ff0583c6f8d8",
+        "type": "function",
+        "z": "cc8a456731dc84cf",
+        "name": "Generate Alert Status",
+        "func": "const p = msg.payload;\n\nconst thresholds = {\n    cpu_temp_warning: 70,\n    cpu_temp_critical: 85,\n    loadavg_warning: 2.0,\n    memory_warning: 85,\n    disk_warning: 90\n};\n\nlet alerts = [];\nlet severity = \"OK\";\n\nif (p.cpu_temp_c >= thresholds.cpu_temp_critical) {\n    alerts.push(`CRITICAL CPU temperature: ${p.cpu_temp_c} °C`);\n    severity = \"CRITICAL\";\n} else if (p.cpu_temp_c >= thresholds.cpu_temp_warning) {\n    alerts.push(`High CPU temperature: ${p.cpu_temp_c} °C`);\n    severity = \"WARNING\";\n}\n\nif (p.loadavg1 >= thresholds.loadavg_warning) {\n    alerts.push(`High system load: ${p.loadavg1}`);\n    if (severity === \"OK\") severity = \"WARNING\";\n}\n\nif (p.memory_used_percent >= thresholds.memory_warning) {\n    alerts.push(`High memory usage: ${p.memory_used_percent} %`);\n    if (severity === \"OK\") severity = \"WARNING\";\n}\n\nif (p.disk_used_percent >= thresholds.disk_warning) {\n    alerts.push(`High disk usage: ${p.disk_used_percent} %`);\n    if (severity === \"OK\") severity = \"WARNING\";\n}\n\nmsg.alert = {\n    device_id: p.device_id,\n    timestamp: p.timestamp,\n    severity: severity,\n    alerts: alerts,\n    cpu_temp_c: p.cpu_temp_c,\n    loadavg1: p.loadavg1,\n    memory_used_percent: p.memory_used_percent,\n    disk_used_percent: p.disk_used_percent\n};\n\nif (alerts.length === 0) {\n    msg.payload = `Status: OK`;\n} else {\n    msg.payload = `${severity}: ${alerts.join(\" | \")}`;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 580,
+        "wires": [
+            [
+                "1af852ed6f8e493f"
+            ]
+        ]
+    },
+    {
+        "id": "807fe1c7f66ceca3",
+        "type": "postgresql",
+        "z": "cc8a456731dc84cf",
+        "name": "iot_telemetrydb",
+        "query": "SELECT * FROM ;",
+        "postgreSQLConfig": "42c58c285f20256d",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 580,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3c011fd6ccc0718b",
+        "type": "function",
+        "z": "cc8a456731dc84cf",
+        "name": "Build SQL insert",
+        "func": "const p = msg.payload;\n\n// Timestamp when Node-RED receives/processes the MQTT message\nconst nodeRedReceivedAt = new Date();\n\n// Timestamp created on the Linux server before publishing\nconst deviceTimestamp = new Date(p.timestamp);\n\n// End-to-end ingest latency from device timestamp to Node-RED receive time\nconst ingestLatencyMs = nodeRedReceivedAt.getTime() - deviceTimestamp.getTime();\n\nmsg.query = `\nINSERT INTO server_metrics (\n    time,\n    device_id,\n    cpu_temp_c,\n    loadavg1,\n    loadavg5,\n    loadavg15,\n    memory_used_percent,\n    disk_used_percent,\n    uptime_seconds,\n    node_red_received_at,\n    ingest_latency_ms\n)\nVALUES (\n    $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11\n);\n`;\n\nmsg.params = [\n    p.timestamp,\n    p.device_id,\n    p.cpu_temp_c,\n    p.loadavg1,\n    p.loadavg5,\n    p.loadavg15,\n    p.memory_used_percent,\n    p.disk_used_percent,\n    p.uptime_seconds,\n    nodeRedReceivedAt.toISOString(),\n    ingestLatencyMs\n];\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 180,
+        "wires": [
+            [
+                "807fe1c7f66ceca3"
+            ]
+        ]
+    },
+    {
+        "id": "00cc9714e6822cba",
+        "type": "inject",
+        "z": "cc8a456731dc84cf",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "5",
+        "topic": "",
+        "payload": "{   \"device_id\": \"server01\",   \"timestamp\": \"2026-05-08T12:02:00Z\",   \"cpu_temp_c\": 88,   \"loadavg1\": 2.5,   \"memory_used_percent\": 91,   \"disk_used_percent\": 93 }",
+        "payloadType": "json",
+        "x": 830,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "34f1a44a81c2fd2f",
+        "type": "function",
+        "z": "cc8a456731dc84cf",
+        "name": "Calculate 5 min moving average",
+        "func": "const p = msg.payload;\n\nconst windowMinutes = 5;\nconst windowMs = windowMinutes * 60 * 1000;\n\nconst sampleTime = new Date(p.timestamp).getTime();\n\nlet samples = context.get(\"samples\") || [];\n\nsamples.push({\n    t: sampleTime,\n    cpu_temp_c: Number(p.cpu_temp_c),\n    loadavg1: Number(p.loadavg1),\n    memory_used_percent: Number(p.memory_used_percent),\n    disk_used_percent: Number(p.disk_used_percent)\n});\n\n// Keep only samples from the last 5 minutes\nsamples = samples.filter(s => s.t >= sampleTime - windowMs);\n\nfunction avg(values) {\n    const valid = values.filter(v => Number.isFinite(v));\n    if (valid.length === 0) return null;\n    return valid.reduce((a, b) => a + b, 0) / valid.length;\n}\n\nfunction round2(x) {\n    if (x === null) return null;\n    return Math.round(x * 100) / 100;\n}\n\nconst result = {\n    device_id: p.device_id,\n    timestamp: p.timestamp,\n    window_minutes: windowMinutes,\n    samples: samples.length,\n\n    current_cpu_temp_c: p.cpu_temp_c,\n    moving_avg_cpu_temp_c: round2(avg(samples.map(s => s.cpu_temp_c))),\n\n    current_loadavg1: p.loadavg1,\n    moving_avg_loadavg1: round2(avg(samples.map(s => s.loadavg1))),\n\n    current_memory_used_percent: p.memory_used_percent,\n    moving_avg_memory_used_percent: round2(avg(samples.map(s => s.memory_used_percent))),\n\n    current_disk_used_percent: p.disk_used_percent,\n    moving_avg_disk_used_percent: round2(avg(samples.map(s => s.disk_used_percent)))\n};\n\ncontext.set(\"samples\", samples);\n\nmsg.payload = result;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 740,
+        "wires": [
+            [
+                "dd94ca25255708bf"
+            ]
+        ]
+    },
+    {
+        "id": "dd94ca25255708bf",
+        "type": "change",
+        "z": "cc8a456731dc84cf",
+        "name": "Extract CPU Moving Avg",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.moving_avg_cpu_temp_c",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "CPU Temp 5 min moving average",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 690,
+        "y": 740,
+        "wires": [
+            [
+                "39179001be2e070d"
+            ]
+        ]
+    },
+    {
+        "id": "39179001be2e070d",
+        "type": "ui-chart",
+        "z": "cc8a456731dc84cf",
+        "d": true,
+        "group": "d815acef15d4ade6",
+        "name": "CPU Temperature 5 min moving average",
+        "label": "CPU Temperature 5 min moving average",
+        "order": 3,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "Last 15 minutes",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "°C",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "",
+        "ymax": "",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": "15",
+        "removeOlderUnit": "60",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": 6,
+        "height": 8,
+        "className": "",
+        "interpolation": "linear",
+        "x": 1000,
+        "y": 740,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ee4c122f48b1b678",
+        "type": "debug",
+        "z": "cc8a456731dc84cf",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "f59b9e8cbc45246e",
+        "type": "http in",
+        "z": "b451cca79bb0b6f0",
+        "name": "GET /api/health",
+        "url": "/api/health",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 100,
+        "y": 40,
+        "wires": [
+            [
+                "a4a5aae2dd9df9a2"
+            ]
+        ]
+    },
+    {
+        "id": "02fbe497905aa535",
+        "type": "http response",
+        "z": "b451cca79bb0b6f0",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 470,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "a4a5aae2dd9df9a2",
+        "type": "function",
+        "z": "b451cca79bb0b6f0",
+        "name": "Health response",
+        "func": "msg.payload = {\n    status: \"ok\",\n    service: \"iot-telemetry-api\",\n    timestamp: new Date().toISOString()\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 40,
+        "wires": [
+            [
+                "02fbe497905aa535"
+            ]
+        ]
+    },
+    {
+        "id": "1e22904af35ba4de",
+        "type": "http in",
+        "z": "b451cca79bb0b6f0",
+        "name": "GET /api/latest",
+        "url": "/api/latest",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 100,
+        "y": 100,
+        "wires": [
+            [
+                "05f7700fdab15fc1"
+            ]
+        ]
+    },
+    {
+        "id": "f3efd241fd38fbf6",
+        "type": "http response",
+        "z": "b451cca79bb0b6f0",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 770,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "05f7700fdab15fc1",
+        "type": "function",
+        "z": "b451cca79bb0b6f0",
+        "name": "Build latest query",
+        "func": "msg.query = `\nSELECT\n    time,\n    device_id,\n    cpu_temp_c,\n    loadavg1,\n    loadavg5,\n    loadavg15,\n    memory_used_percent,\n    disk_used_percent,\n    uptime_seconds\nFROM server_metrics\nORDER BY time DESC\nLIMIT 1;\n`;\n\nmsg.params = [];\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 100,
+        "wires": [
+            [
+                "f34e88445435dc9a"
+            ]
+        ]
+    },
+    {
+        "id": "f34e88445435dc9a",
+        "type": "postgresql",
+        "z": "b451cca79bb0b6f0",
+        "name": "iot_telemetrydb",
+        "query": "SELECT * FROM ;",
+        "postgreSQLConfig": "42c58c285f20256d",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 520,
+        "y": 100,
+        "wires": [
+            [
+                "a9ec72abc9822ab4"
+            ]
+        ]
+    },
+    {
+        "id": "a9ec72abc9822ab4",
+        "type": "function",
+        "z": "b451cca79bb0b6f0",
+        "name": "Format latest response",
+        "func": "const rows = msg.payload;\n\nif (!rows || rows.length === 0) {\n    msg.statusCode = 404;\n    msg.payload = {\n        error: \"No telemetry data found\"\n    };\n    return msg;\n}\n\nmsg.payload = rows[0];\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 160,
+        "wires": [
+            [
+                "f3efd241fd38fbf6"
+            ]
+        ]
+    },
+    {
+        "id": "7ee9bbddaa7ccac2",
+        "type": "http in",
+        "z": "b451cca79bb0b6f0",
+        "name": "GET /api/metrics",
+        "url": "/api/metrics",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 100,
+        "y": 220,
+        "wires": [
+            [
+                "e9339881c6489979"
+            ]
+        ]
+    },
+    {
+        "id": "1d922f02c096dce0",
+        "type": "http response",
+        "z": "b451cca79bb0b6f0",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 770,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "e9339881c6489979",
+        "type": "function",
+        "z": "b451cca79bb0b6f0",
+        "name": "Build metrics query",
+        "func": "let limit = parseInt(msg.req.query.limit || \"100\", 10);\n\nif (Number.isNaN(limit)) {\n    limit = 100;\n}\n\n// Safety limit, so users cannot accidentally request too much data\nlimit = Math.max(1, Math.min(limit, 1000));\n\nmsg.query = `\nSELECT\n    time,\n    device_id,\n    cpu_temp_c,\n    loadavg1,\n    loadavg5,\n    loadavg15,\n    memory_used_percent,\n    disk_used_percent,\n    uptime_seconds\nFROM server_metrics\nORDER BY time DESC\nLIMIT $1;\n`;\n\nmsg.params = [limit];\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 220,
+        "wires": [
+            [
+                "8c29e3ad63486051"
+            ]
+        ]
+    },
+    {
+        "id": "8c29e3ad63486051",
+        "type": "postgresql",
+        "z": "b451cca79bb0b6f0",
+        "name": "iot_telemetrydb",
+        "query": "SELECT * FROM ;",
+        "postgreSQLConfig": "42c58c285f20256d",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 520,
+        "y": 220,
+        "wires": [
+            [
+                "8d86575f0803e786"
+            ]
+        ]
+    },
+    {
+        "id": "8d86575f0803e786",
+        "type": "function",
+        "z": "b451cca79bb0b6f0",
+        "name": "Format metrics response",
+        "func": "msg.payload = {\n    count: msg.payload.length,\n    data: msg.payload\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 280,
+        "wires": [
+            [
+                "1d922f02c096dce0"
+            ]
+        ]
+    },
+    {
+        "id": "39624d30e0f82c74",
+        "type": "http in",
+        "z": "b451cca79bb0b6f0",
+        "name": "GET /api/summary",
+        "url": "/api/summary",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 340,
+        "wires": [
+            [
+                "2981d4a839f953bd"
+            ]
+        ]
+    },
+    {
+        "id": "8b5d9ee76444a23d",
+        "type": "http response",
+        "z": "b451cca79bb0b6f0",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 770,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "2981d4a839f953bd",
+        "type": "function",
+        "z": "b451cca79bb0b6f0",
+        "name": "Build summary query",
+        "func": "let minutes = parseInt(msg.req.query.minutes || \"60\", 10);\n\nif (Number.isNaN(minutes)) {\n    minutes = 60;\n}\n\n// Safety limits\nminutes = Math.max(1, Math.min(minutes, 1440));\n\nmsg.query = `\nSELECT\n    device_id,\n    COUNT(*) AS samples,\n    MIN(cpu_temp_c) AS min_cpu_temp_c,\n    MAX(cpu_temp_c) AS max_cpu_temp_c,\n    AVG(cpu_temp_c) AS avg_cpu_temp_c,\n    MIN(loadavg1) AS min_loadavg1,\n    MAX(loadavg1) AS max_loadavg1,\n    AVG(loadavg1) AS avg_loadavg1,\n    AVG(memory_used_percent) AS avg_memory_used_percent,\n    AVG(disk_used_percent) AS avg_disk_used_percent\nFROM server_metrics\nWHERE time >= NOW() - ($1::int * INTERVAL '1 minute')\nGROUP BY device_id;\n`;\n\nmsg.params = [minutes];\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 340,
+        "wires": [
+            [
+                "1218c7f7f46c6b04"
+            ]
+        ]
+    },
+    {
+        "id": "1218c7f7f46c6b04",
+        "type": "postgresql",
+        "z": "b451cca79bb0b6f0",
+        "name": "iot_telemetrydb",
+        "query": "SELECT * FROM ;",
+        "postgreSQLConfig": "42c58c285f20256d",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 560,
+        "y": 340,
+        "wires": [
+            [
+                "c0615e4bd7a41bf7"
+            ]
+        ]
+    },
+    {
+        "id": "c0615e4bd7a41bf7",
+        "type": "function",
+        "z": "b451cca79bb0b6f0",
+        "name": "Format summary response",
+        "func": "msg.payload = {\n    window_minutes: parseInt(msg.req.query.minutes || \"60\", 10),\n    summaries: msg.payload\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 400,
+        "wires": [
+            [
+                "8b5d9ee76444a23d"
+            ]
+        ]
+    },
+    {
+        "id": "0f4b152e3833f23c",
+        "type": "http in",
+        "z": "b451cca79bb0b6f0",
+        "name": "GET /api/aggregate",
+        "url": "/api/aggregate",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 460,
+        "wires": [
+            [
+                "3752697e400afa8b"
+            ]
+        ]
+    },
+    {
+        "id": "3752697e400afa8b",
+        "type": "function",
+        "z": "b451cca79bb0b6f0",
+        "name": "Build aggregate query",
+        "func": "let minutes = parseInt(msg.req.query.minutes || \"60\", 10);\nlet bucket = msg.req.query.bucket || \"1m\";\n\n// Safety limits\nif (Number.isNaN(minutes)) {\n    minutes = 60;\n}\n\nminutes = Math.max(1, Math.min(minutes, 1440));\n\n// Allow only predefined bucket sizes\nconst allowedBuckets = {\n    \"10s\": \"10 seconds\",\n    \"30s\": \"30 seconds\",\n    \"1m\": \"1 minute\",\n    \"5m\": \"5 minutes\",\n    \"15m\": \"15 minutes\",\n    \"1h\": \"1 hour\"\n};\n\nconst bucketInterval = allowedBuckets[bucket] || \"1 minute\";\n\nmsg.query = `\nSELECT\n    time_bucket($1::interval, time) AS bucket,\n    device_id,\n    COUNT(*)::int AS samples,\n    ROUND(AVG(cpu_temp_c)::numeric, 2)::float AS avg_cpu_temp_c,\n    MIN(cpu_temp_c) AS min_cpu_temp_c,\n    MAX(cpu_temp_c) AS max_cpu_temp_c,\n    ROUND(AVG(loadavg1)::numeric, 2)::float AS avg_loadavg1,\n    ROUND(AVG(memory_used_percent)::numeric, 2)::float AS avg_memory_used_percent,\n    ROUND(AVG(disk_used_percent)::numeric, 2)::float AS avg_disk_used_percent\nFROM server_metrics\nWHERE time >= NOW() - ($2::int * INTERVAL '1 minute')\nGROUP BY bucket, device_id\nORDER BY bucket DESC\nLIMIT 500;\n`;\n\nmsg.params = [bucketInterval, minutes];\n\nmsg.api_meta = {\n    requested_bucket: bucket,\n    bucket_interval: bucketInterval,\n    window_minutes: minutes\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 460,
+        "wires": [
+            [
+                "5c8ece68de221b23"
+            ]
+        ]
+    },
+    {
+        "id": "5c8ece68de221b23",
+        "type": "postgresql",
+        "z": "b451cca79bb0b6f0",
+        "name": "iot_telemetrydb",
+        "query": "SELECT * FROM ;",
+        "postgreSQLConfig": "42c58c285f20256d",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 560,
+        "y": 460,
+        "wires": [
+            [
+                "ebde1143854a98fc"
+            ]
+        ]
+    },
+    {
+        "id": "ebde1143854a98fc",
+        "type": "function",
+        "z": "b451cca79bb0b6f0",
+        "name": "Format aggregate response",
+        "func": "msg.payload = {\n    endpoint: \"/api/aggregate\",\n    bucket: msg.api_meta.bucket_interval,\n    window_minutes: msg.api_meta.window_minutes,\n    count: msg.payload.length,\n    data: msg.payload\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 520,
+        "wires": [
+            [
+                "9e4ddfc86d93d966"
+            ]
+        ]
+    },
+    {
+        "id": "9e4ddfc86d93d966",
+        "type": "http response",
+        "z": "b451cca79bb0b6f0",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 770,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "0f75a7f0e88cf940",
+        "type": "http in",
+        "z": "b451cca79bb0b6f0",
+        "name": "GET /api/movingavg",
+        "url": "/api/movingavg",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 580,
+        "wires": [
+            [
+                "54d3536d0e2094d5"
+            ]
+        ]
+    },
+    {
+        "id": "54d3536d0e2094d5",
+        "type": "function",
+        "z": "b451cca79bb0b6f0",
+        "name": "Build moving average query",
+        "func": "let minutes = parseInt(msg.req.query.minutes || \"60\", 10);\nlet windowMinutes = parseInt(msg.req.query.window || \"5\", 10);\nlet bucket = msg.req.query.bucket || \"1m\";\n\nif (Number.isNaN(minutes)) minutes = 60;\nif (Number.isNaN(windowMinutes)) windowMinutes = 5;\n\nminutes = Math.max(1, Math.min(minutes, 1440));\nwindowMinutes = Math.max(1, Math.min(windowMinutes, 120));\n\nconst allowedBuckets = {\n    \"10s\": { interval: \"10 seconds\", seconds: 10 },\n    \"30s\": { interval: \"30 seconds\", seconds: 30 },\n    \"1m\": { interval: \"1 minute\", seconds: 60 },\n    \"5m\": { interval: \"5 minutes\", seconds: 300 }\n};\n\nconst selectedBucket = allowedBuckets[bucket] || allowedBuckets[\"1m\"];\nconst bucketInterval = selectedBucket.interval;\n\n// Number of bucket rows included in the moving average window.\n// Example: 5 minute window with 1 minute buckets = 5 rows.\nconst windowRows = Math.max(1, Math.ceil((windowMinutes * 60) / selectedBucket.seconds));\n\nmsg.query = `\nWITH bucketed AS (\n    SELECT\n        time_bucket($1::interval, time) AS bucket,\n        device_id,\n        COUNT(*)::int AS samples,\n        ROUND(AVG(cpu_temp_c)::numeric, 2)::float AS avg_cpu_temp_c,\n        ROUND(AVG(loadavg1)::numeric, 2)::float AS avg_loadavg1,\n        ROUND(AVG(memory_used_percent)::numeric, 2)::float AS avg_memory_used_percent,\n        ROUND(AVG(disk_used_percent)::numeric, 2)::float AS avg_disk_used_percent\n    FROM server_metrics\n    WHERE time >= NOW() - (($2::int + $3::int) * INTERVAL '1 minute')\n    GROUP BY bucket, device_id\n),\nwith_moving_average AS (\n    SELECT\n        bucket,\n        device_id,\n        samples,\n        avg_cpu_temp_c,\n        ROUND(\n            AVG(avg_cpu_temp_c) OVER (\n                PARTITION BY device_id\n                ORDER BY bucket\n                ROWS BETWEEN ${windowRows - 1} PRECEDING AND CURRENT ROW\n            )::numeric,\n            2\n        )::float AS moving_avg_cpu_temp_c,\n\n        avg_loadavg1,\n        ROUND(\n            AVG(avg_loadavg1) OVER (\n                PARTITION BY device_id\n                ORDER BY bucket\n                ROWS BETWEEN ${windowRows - 1} PRECEDING AND CURRENT ROW\n            )::numeric,\n            2\n        )::float AS moving_avg_loadavg1,\n\n        avg_memory_used_percent,\n        ROUND(\n            AVG(avg_memory_used_percent) OVER (\n                PARTITION BY device_id\n                ORDER BY bucket\n                ROWS BETWEEN ${windowRows - 1} PRECEDING AND CURRENT ROW\n            )::numeric,\n            2\n        )::float AS moving_avg_memory_used_percent,\n\n        avg_disk_used_percent,\n        ROUND(\n            AVG(avg_disk_used_percent) OVER (\n                PARTITION BY device_id\n                ORDER BY bucket\n                ROWS BETWEEN ${windowRows - 1} PRECEDING AND CURRENT ROW\n            )::numeric,\n            2\n        )::float AS moving_avg_disk_used_percent\n    FROM bucketed\n)\nSELECT *\nFROM with_moving_average\nWHERE bucket >= NOW() - ($2::int * INTERVAL '1 minute')\nORDER BY bucket DESC\nLIMIT 500;\n`;\n\nmsg.params = [bucketInterval, minutes, windowMinutes];\n\nmsg.api_meta = {\n    endpoint: \"/api/moving-average\",\n    bucket: bucketInterval,\n    window_minutes: windowMinutes,\n    returned_minutes: minutes,\n    window_rows: windowRows\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 580,
+        "wires": [
+            [
+                "fba72c0eccb636a5"
+            ]
+        ]
+    },
+    {
+        "id": "fba72c0eccb636a5",
+        "type": "postgresql",
+        "z": "b451cca79bb0b6f0",
+        "name": "iot_telemetrydb",
+        "query": "SELECT * FROM ;",
+        "postgreSQLConfig": "42c58c285f20256d",
+        "split": false,
+        "rowsPerMsg": 1,
+        "outputs": 1,
+        "x": 600,
+        "y": 580,
+        "wires": [
+            [
+                "ac9770515446066b"
+            ]
+        ]
+    },
+    {
+        "id": "ac9770515446066b",
+        "type": "function",
+        "z": "b451cca79bb0b6f0",
+        "name": "Format moving average response",
+        "func": "msg.payload = {\n    endpoint: \"/api/movingavg\",\n    bucket: msg.api_meta.bucket,\n    window_minutes: msg.api_meta.window_minutes,\n    returned_minutes: msg.api_meta.returned_minutes,\n    window_rows: msg.api_meta.window_rows,\n    count: msg.payload.length,\n    data: msg.payload\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 640,
+        "wires": [
+            [
+                "7c9cad617f64c3c1"
+            ]
+        ]
+    },
+    {
+        "id": "7c9cad617f64c3c1",
+        "type": "http response",
+        "z": "b451cca79bb0b6f0",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 810,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "2eb602cf3ca727e4",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "@flowfuse/node-red-dashboard": "1.30.2",
+            "node-red-contrib-postgresql": "0.15.4"
+        }
+    }
+]
