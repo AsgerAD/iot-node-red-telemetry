@@ -12,7 +12,7 @@ import paho.mqtt.publish as publish
 
 DEVICE_ID = "server01"
 
-MQTT_HOST = "100.81.172.83"	# Windows/Tailscale IP
+MQTT_HOST = ""	# Windows/Tailscale IP
 MQTT_PORT = 1883
 MQTT_TOPIC = "iot/group01/server01/telemetry"
 
