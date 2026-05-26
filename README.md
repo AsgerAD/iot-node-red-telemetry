@@ -7,7 +7,6 @@ This repository contains the source code and configuration files for the Interne
 - `publisher/telemetry.py`: Python telemetry publisher running on the Linux edge server.
 - `node-red/flows.json`: Exported Node-RED flows for MQTT ingestion, dashboard, database insertion, analytics, and REST API.
 - `database/schema.sql`: TimescaleDB/PostgreSQL schema.
-- `docker/`: Docker setup files, if available.
 
 ## System overview
 
